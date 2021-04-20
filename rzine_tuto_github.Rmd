@@ -1,18 +1,24 @@
 ---
 title: "Tutoriel express pour l'utilisation de github dans le cadre d'un dépôt de publication Rzine"
-author: "Rzine"
+#subtitle: 
 date: "`r Sys.Date()`"
+author: 
+ - name: Rzine
+   affiliation:
+image:   
 output:
-  rmdformats::readthedown:
+  rzine::readrzine:
     highlight: kate
     number_sections: true
 #bibliography: biblio.bib
+logo : "figures/rzine.png"  
 nocite: |
   @*
 link_citations: true
 editor_options: 
   chunk_output_type: console
 ---
+
 
 
 ```{r setup, echo=FALSE, cache=FALSE}
@@ -31,15 +37,19 @@ opts_chunk$set(echo=FALSE,
 opts_knit$set(width=75)
 ```
 
-# Préambule
 
-## Pourquoi utiliser Github dans le cadre de Rzine
+# Préambule {-}
+
+## Pourquoi utiliser Github dans le cadre de Rzine{-}
 
 Depuis maintenant plusieurs années en SHS on entend beaucoup parler de Git, Github ou encore Gitlab, il s'agit quasiment d'un passage obligé lorsque l'on parle de traitement de la donnée.
 Ces outils ont vocation à faciliter le partage et la collaboration autour de projets.
-Les fonctionnalités proposées permettent notamment le suivi et la comparaison de version et un reviewing efficace.
+Les fonctionnalités proposées permettent notamment le suivi et la comparaison de version et un reviewing efficace, traçable et transparant.
 
-## Objectif de cette fiche
+L'usage de Git est par ailleurs encore peu répandu en SHS. Nous souhaitons ainsi promouvoir son usage par l'intermédiaire du processus de publication de fiches Rzine. 
+
+
+## Objectif de cette fiche {-}
 
 Si au sein de certaines disciplines, comme notamment en informatique, ce que sont Git et Github et leur fonctionnement est très clair, ça l'est souvent beaucoup moins en sciences humaines.
 Nous nous proposons ici d'en réaliser une présentation très succincte et de présenter un pas à pas simplifié afin de faciliter la prise en main de ces outils dans le cadre spécifique du dépôt d'une fiche Rzine. Il ne s'agit en aucun cas d'aborder toutes les subtilités et la compléxité de Git.
@@ -47,29 +57,28 @@ Nous nous proposons ici d'en réaliser une présentation très succincte et de p
 R ne sera donc ici pas du tout le sujet, et aucune information sur la manière de renseigner une fiche Rzine ne sera donnée. Pour cela, rendez-vous sur la fiche : <a href="https://rzine.gitpages.huma-num.fr/add_publication/" target="_blank">__Référencer une publication sur Rzine__</a>
 
 
-## Glossaire {#endnotes}
+## Glossaire {-#endnotes}
 
 Ici quelques termes spécifiques à Git qu'il nous a semblé important d'expliciter un minimum.
 
 
-# Brève introduction {-}
+## Brève introduction {-}
 
-
-Git est un logiciel libre dont le premier développement date de 2005. Créé par Linus Torvald (auteur du noyau Linux), sa fonctionnalité première réside dans la gestion/contrôle de version^[La __gestion ou le conrôle de version__ renvoie à des pratiques dont l'objectif est de gérer les changements apportés à un fichier (généralement plutôt du code) au fil du temps. Par exemple dans un document de traitement de texte, chaque sauvegarde écrase la précédente. On peut aussi enregistrer une nouvelle version du document qui devient alors un autre fichier complétement indépendant. Les systèmes de contrôle de version permettent quant-à-eux de garder trace de tous les changements réalisés sur un même fichier, comme si l'on prenait et stockait un "instantané" du fichier à chaque étape de modification].
+Git est un logiciel libre dont le premier développement date de 2005. Créé par Linus Torvald (auteur du noyau Linux), sa fonctionnalité première réside dans la gestion/contrôle de version^[La __gestion ou le contrôle de version__ renvoie à des pratiques dont l'objectif est de gérer les changements apportés à un fichier (généralement plutôt du code) au fil du temps. Par exemple dans un document de traitement de texte, chaque sauvegarde écrase la précédente. On peut aussi enregistrer une nouvelle version du document qui devient alors un autre fichier complétement indépendant. Les systèmes de contrôle de version permettent quant-à-eux de garder trace de tous les changements réalisés sur un même fichier, comme si l'on prenait et stockait un "instantané" du fichier à chaque étape de modification].
 
 Git a été conçu dans l'optique de permettre et de faciliter la collaboration entre les individus en intégrant les apports de chacun au projet de façon incrémentale ou synchrone.
 
-Le fonctionnement de Git repose sur des lignes de commande et, vous l'aurez compris, il s'agit du coeur autour duquel se sont dévellopés des outils comme Github et Gitlab.
+Le fonctionnement de Git repose sur des lignes de commande et, vous l'aurez compris, il s'agit du coeur autour duquel se sont développés des outils comme Github et Gitlab.
 
 Github et Gitlab sont à l'origine des sites webs dont l'objectif est de venir renforcer l'aspect collaboratif de Git en proposant des fonctionnalités supplémentaires telles que que la gestion des tickets/issues, les publications/releases, la documentation...
 Ils offrent également une interface graphique à Git, ce qui permet de s'affranchir -dans une certaine mesure- des lignes de commande sur lesquelles repose Git.
 
 Github et Gitlab permettent globalement la même chose. Toutefois, Gitlab est une alternative open source, qui offre des fonctionnalités plus avancées que Github, qui se positionne quant-à lui comme la référence mondiale popularisé Git et regroupe plusieurs millions d'utilisateurs.
 
-# Pas à pas pour la création d'un dépot Github {-}
 
-Dans le cadre de ce tutoriel, nous vous proposons de vous présenter "pas à pas" les étapes suivies pour le dépot de cette fiche sur un compte github. La démarche se fera à la fois en clique-bouton et à l'aide des lignes de commande.
-Cette fiche a été réalisée via R sous la forme d'un document Rmarkdown, dans un projet R enregistré en local.
+# Pas à pas pour la création d'un dépot Github
+
+Dans le cadre de ce tutoriel, nous vous proposons de vous présenter "pas à pas" les étapes suivies pour le dépot de cette fiche sur un compte GitHub. La démarche se fera à la fois en clique-bouton et à l'aide des lignes de commande.
 
 ## Installation de Git
 
@@ -97,7 +106,7 @@ Pour créer un dépot^[Le __dépôt/répertoire/repo/repostory__ est l'espace o�
 
 <p class="center"><img src="figures/bandeau_01.png"/> </p>
 
-Cette page recence tous les répertoires associés à votre compte, si vous venez de vous créer un compte, elle devrait donc être vide, sinon vous retrouverez ici tous vos différents dépôts. Pour en créer un, il suffit de cliquer sur _new_.
+Cette page recense tous les répertoires associés à votre compte, si vous venez de vous créer un compte, elle devrait donc être vide, sinon vous retrouverez ici tous vos différents dépôts. Pour en créer un, il suffit de cliquer sur _new_.
 
 <p class="center"><img src="figures/page_repo_01.png"/> </p>
 
@@ -118,7 +127,7 @@ Tant que vous n'aurez rien importé dans votre dépôt, c'est cette page avec ce
 
 Pour réaliser cet import, vous allez temporairement laisser Github de côté.
 
-Vous avez donc réalisé en local votre fiche Rzine, et disposez d'un dossier contenant tous les différents éléments.
+Vous avez donc réalisé en local votre [fiche Rzine](https://rzine.gitpages.huma-num.fr/help_rzine_publication/), et disposez d'un dossier contenant tous les éléments requis.
 L'objectif est donc d'importer facilement ce dossier (dans son intégralité) dans votre répertoire GitHub en utilisant Git et ses lignes de commande classiques.
 
 
@@ -182,7 +191,7 @@ Les commandes suivantes permettent de préciser les éléments à importer :
 * `git add --all` : l'intégralité d'un dossier
 * `git add rzine_tuto_github.Rmd` : un fichier particulier
 
-Dans un second temps, il faut réaliser un _commit_^[Le __commit__ est l'enregistrement des changements effectués sur un fichier. Il s'agit de l'"instantané", du point de sauvegarde des changements qui ont été réalisés. C'est sur le commit que repose complétement le système de contrôle de version et donc plus largement les outils comme Git et Github.], c'est-à-dire une sauvegarde à un instant "t" des différents éléments du dossier et/ou de l'état des fichiers, grâce à la commande `git commit`.
+Dans un second temps, il faut réaliser un _commit_^[Le __commit__ est l'enregistrement des changements effectués sur un fichier. Il s'agit de l'"instantané", du point de sauvegarde des changements qui ont été réalisés. C'est sur le commit que repose complétement le système de contrôle de version et donc plus largement les outils comme Git et Github. A chaque commit doit être associé un message en langue anglaise décrivant la nature de la modification apportée], c'est-à-dire une sauvegarde à un instant "t" des différents éléments du dossier et/ou de l'état des fichiers, grâce à la commande `git commit`.
 
 La commande "-m" suivie  d"un texte entre guillemets permet de spécifier le message associé à l'étape d'enregistrement de l'instantané :
 * `git commit -m "1er import des fichiers"`
@@ -196,14 +205,30 @@ Notez que pour valider votre import, il faudra fournir votre identifiant et votr
 
 Une fois toutes ces étapes validées, votre dépôt GitHub contiendra les fichiers que vous aviez en local sur votre ordinateur!
 
-
 <div class="alert alert-info" role="alert">
 Il est possible de s'affranchir du code Git, et tout réaliser via Github en click. Néanmoins, cette méthode peut s'avérer très fastidieuse, l'importation se faisant fichier par fichier, elle peut rapidement devenir chronophage.
 <hr>
 Si interagir avec votre terminal ou invite de commandes ne vous convient pas, il existe également des interfaces graphiques pour Git qui permettent globalement la même chose, mais vous devrez malgré tout utiliser les lignes de commandes avec ces applications.
 </div>
 
-# Les "Issues" Github {-}
+> RY : Bonne pratique le terminal, mais je me demande si on n'a pas intérêt à faire la démonstration en mode clic-bouton. Par ailleurs pour avoir fait le test avec l'interface GitHub, tu peux importer plusieurs fichiers simultanément (procédure qui combine visiblement git add ., git commit -m"" et git push). Quitte à présenter la démarche en ligne de commande en annexes ?
+
+
+
+# Gestion du processus d'évaluation avec Git
+
+> J'ai créé ce paragraphe pour essayer de contextualiser le cycle de publication Rzine à la mode de Git... J'ai essayé de précsier les titres pour rappeler qui est concerné par quoi dans le cas d'un processus de publication Rzine... 
+
+Une fois votre fiche Rzine soumise, l'évaluateur ([REVIEWER)] qui vous sera proposé va être amené à vous suggérer des améliorations de fond ou de forme  via des **issues** (commentaires) ou des propositions de correction / d'amélioration dans le corps de votre RMarkdown via des **pull request**, suivant les [consignes éditoriales de la collection Rzine](https://rysebaert.gitpages.huma-num.fr/rzine-editorial-guidelines/). 
+
+Durant le processus de review, vous serez amené.e en tant que [REPO OWNER] à consulter et répondre à ces retours, puis éventuellement d'impacter les modifications suggérées dans votre fiche Rzine en cours d'évaluation. Le processus de review est publique (l'évaluateur n'est pas anonyme) et transparant (l'ensemble des modifications apportées au document étant historicisée).
+
+Au préalable, vous recevrez une demande d'accès à votre dépôt GitHub ou GitLab pour que l'évaluateur puisse y déposer ses retours. Pour accorder l'accès à un collaborateur externe, se rendre dans *Settings*, puis *Manage Access* et saisir l'identifiant de l'évaluateur. Il aura alors le droit d'accéder à votre dépôt et vous proposer ses retours. 
+
+Cette section décrit ce que sont les **issues** et les **pull request** ainsi que la procédure à suivre pour les prendre en compte. 
+
+
+## Les "Issues" Github [REPO OWNER - REVIEWER]
 
 Les issues Github correspondent à un espace d'échange autour de votre projet. C'est un espace ouvert à tous si votre dépôt est public ou seulement à vous-même ou aux personnes auxquelles vous aurez donné accès dans le cas d'un dépôt privé.
 
@@ -228,11 +253,12 @@ Pour répondre, modifier, clôturer (ou ré-ouvrir) une issue, il suffit de cliq
 
 <p class="center"><img src="figures/modif_issue.png"/> </p>
 
-# Branche et Pull requests {-}
 
-## Les branches
+## Branches et pull request [REVIEWER]
 
-Git et Github permettent de faire des branches^[Une __branche__ est une ramification indépendante de votre dépôt source. Elle permet donc de modifier en parallèle les fichiers ou la structure du dépôt sans affecter les autres branches. C'est extrêment utile d'autant qu'elles peuvent ensuite être re-fusionnées.]
+>  Est-ce qu'on ne va pas trop loin avec la création de branche ? Je me demande si on ne va pas perdre le lecteur ici, c'est un peu technique quand même ! Mais pourquoi pas après tout ! Est-ce que l'on demande donc au rewiewer de créer une branche pour y déposer ses pull requests ? 
+
+Git et Github permettent de faire des branches^[Une __branche__ est une ramification indépendante de votre dépôt source. Elle permet donc de modifier en parallèle les fichiers ou la structure du dépôt sans affecter les autres branches. C'est extrêment utile pour travailler collaborativement sur un dépôt, d'autant qu'elles peuvent ensuite être re-fusionnées.]
 Cela s'avère très utile lorsque l'on travaille à plusieurs ou que des corrections de contenu sont nécessaires.
 
 Dans Gitub, la création de branches peut se faire facilement.
@@ -246,6 +272,7 @@ Un menu déroulant apparait : pour créer une branche, il suffit d'écrire son n
 
 Cet onget vous indiquera dans quelle branche vous vous trouvez et vous permettra également de naviguer entre les branches.
 
+
 % ICI JE PENSE QUE L'ON PEUT ETRE PLUS CLAIRS
 En procédant de cette manière, les branches créées seront des copies des branches depuis lesquelles vous les avez produites. Cela suppose que s'il y a des modification à faire il faut les faire depuis Github ou supprimer un fichier et le ré-importer dans la branche. Ce n'est pas toujours le plus efficace.
 
@@ -253,7 +280,7 @@ La même chose est possible en ligne de commande, et, ce, de manière plus optim
 
 Pour faciliter la compréhension du principe prenons l'exemple de cette fiche Rzine.
 Nous avons déposé dans un dépôt Github une première version de nos travaux. Nous souhaitons la faire relire par un collègue, ou y apporter nous-même des modifications sans toutefois écraser la première version.
-Nous allons donc opérer les différentes modifications en local sur notre ordinateur. Une fois satisfaits, nous allons créer une branche au sein de laquelle nous allons importer les fichiers modifiés sans écraser les premiers travaux. Le très grand intérêt à cela c'est que nous pourrons par la suite comparer les deux branches et éventuellement les fusionner.
+Nous allons donc opérer les différentes modifications en local sur notre ordinateur. Une fois satisfaits, nous (**Le nous n'est pas clair, reviewer, repo owner ?**) allons créer une branche au sein de laquelle nous allons importer les fichiers modifiés sans écraser les premiers travaux. Le très grand intérêt à cela c'est que nous pourrons par la suite comparer les deux branches et éventuellement les fusionner.
 
 Commencez par vous placer dans le bon répertoire (ici le dossier tuto_github localisé dans le répertoire Rzine appartenant lui-même au répertoire gregoire et ainsi de suite) :
 
@@ -288,7 +315,9 @@ Notons, enfin, qu'il est aisé de naviguer d'une branche à l'autre grâce à la
 `git checkout master`
 
 
-## Pull requests
+## Pull requests (REVIEWER)
+
+> Peut être orienter davantage le propos autour du taf du reviewer, qui peut être amené à proposer ses retours au sein d'une ou plusieurs pull request que la personne qui soumet sera amenée à consulter ? 
 
 Avec la création de branches, vous pouvez donc modifier comme vous le souhaitez un fichier tout en le conservant intact dans une autre branche.
 
@@ -330,17 +359,32 @@ Vous avez donc fait une demande qui apparaitra dans votre section _Pull requests
 % pas sûre de comprendre ce que tu voulais dire dans la deuxième partie de la phrase?
 Vous pouvez échanger des pull request de la même manière qu'avec les issues, avec l'avantage que les pull requests permettent de visualiser ce qui sera fusionné.
 
+> A partir de là, cela concerne la personne qui reçoit la review et qui doit accepter les commentaires, puis les traiter. Est-ce qu'il ne faudrait pas être plus précis sur les possibilités qui lui sont offertes ? Pour faciliter le processus, je suggèerais d'accepter les corrections, d'effectuer les modifications, de régénérer le html puis d'avertir le reviewer pour validation ?
+
+## Merge pull request [REPO OWNER] 
+ 
 Si cela vous convient, vous pouvez accepter les modifications en cliquant sur _Merge pull request_.
 
 <p class="center"><img src="figures/accept_pullrequest_01.png"/> </p>
 
 Les deux branches sont alors fusionnées.
 
+
 Il est également possible de refuser un pull request (et donc d'ignorer les modifications de fichiers associées) en cliquant sur _Close pull request_
 
 
+## Synthétiser les modifications apportées [REPO OWNER - REVIEWER]
 
-# Liste non exhaustive des commandes Git pouvant être utiles {-}
+> RY : Je me demande s'il n'y a pas lieu de déposer à la racine du repo de la proposition un README.md qui synthétise les remarques principales de l'évaluateur et permet à la personne qui soumet de décrire les modifications apportées à sa fiche, d'où la proposition de ce paragraphe.
+
+> J'ai tenté un [exemple bidon à partir d'une fiche bidon](https://github.com/rysebaert/ma_fiche_rzine/tree/main) 
+
+
+
+
+
+
+# Liste non exhaustive des commandes Git pouvant être utiles
 
 `git init` : Initialise un nouveau dépôt Git. C'est seulement après avoir entré cette commande que vous pourrez commencer à travailler avec Git.
 
